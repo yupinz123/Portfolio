@@ -22,6 +22,27 @@
         </div>
     </header>
 
+    <script>
+        // ヘッダーをスクロール時にコンパクト化する
+        (function() {
+            const header = document.querySelector('.header');
+            if (!header) return;
+            let lastScrollY = window.scrollY;
+            const threshold = 80; // px
+            function onScroll() {
+                const currentY = window.scrollY;
+                if (currentY > threshold) {
+                    header.classList.add('header--compact');
+                } else {
+                    header.classList.remove('header--compact');
+                }
+                lastScrollY = currentY;
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            // 初回実行
+            onScroll();
+        })();
+    </script>
     <main>
         <section id="hero" class="hero-section">
             <div class="container">
